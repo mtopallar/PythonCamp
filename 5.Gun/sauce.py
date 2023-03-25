@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.action_chains import ActionChains
+from constants import globalConstants
 
 #pytestte çalışan örneklere init ekleyemiyoruz. bu yüzden bu yapı pytest e uygun değil. pytest bunu test dosyası olarak görmesin diye dosyanın adını test_sauce iken sauce olarak değiştirdik. Bu sınıf manuel olarak çalıştırılabilir bir sınıf ancak pytest içinde çalışmaya uygun değil. manuel test örneği olarak bu örneği de sakladık.
 
@@ -12,7 +13,7 @@ class Test_Sauce:
     def __init__(self):
         self.driver = webdriver.Chrome(ChromeDriverManager().install())
         self.driver.maximize_window()
-        self.driver.get("https://www.saucedemo.com/")
+        self.driver.get(globalConstants.URL)
     
     def test_invalid_login(self):        
         WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.ID,"user-name"))) 
